@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#AA0000</color>
+    <color name="colorPrimaryDark">#880000</color>
+    <color name="colorAccent">#FF2222</color>
+
+    <!-- these guys are no longer used; drawable/red_gradient.xml etc. are
+         used instead.
+    <color name="colorHeroDifficultyBG">#AA0000</color>
+    <color name="colorSurvivorDifficultyBG">#004400</color>
+    <color name="colorOtherDifficultyBG">#000088</color>
+    -->
+</resources>

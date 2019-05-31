@@ -1,0 +1,8 @@
+<resources>
+    <!--  in ScenarioActivity  -->
+    <dimen name="scenario_name_font_size">24sp</dimen>
+    <!--  in MainActivity  -->
+    <dimen name="scenario_list_font_size">32sp</dimen>
+    <dimen name="scenario_list_item_padding_h">16dp</dimen>
+    <dimen name="scenario_list_item_padding_v">4dp</dimen>
+</resources>

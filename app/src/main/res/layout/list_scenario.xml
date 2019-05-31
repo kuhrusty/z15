@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@+id/name"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/blue_gradient"
+    android:fontFamily="@font/bangers"
+    android:paddingBottom="@dimen/scenario_list_item_padding_v"
+    android:paddingLeft="@dimen/scenario_list_item_padding_h"
+    android:paddingRight="@dimen/scenario_list_item_padding_h"
+    android:paddingTop="0dp"
+    android:text="@string/sample"
+    android:textColor="@android:color/white"
+    android:textSize="@dimen/scenario_list_font_size"/>

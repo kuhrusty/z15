@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Zombie 15</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+
+    <!--  The format string for scenario names in the MainActivity scenario
+          list, and probably also for the ScenarioActivity title.  Probably
+          could've included the number in the scenario name instead of having
+          this.  -->
+    <string name="scenario_format">%1s. %2s</string>
+
+    <!--  The format string for the amount of time remaining in a scenario or
+          until the next growl.  -->
+    <string name="time_format">%d:%02d</string>
+
+    <!--  This is the subdirectory under app/src/main/assets which contains
+          the localized scenarios.json.  Technically the only thing in that file
+          which is language-specific is the scenario name... you should probably
+          move the scenario names here, and move scenarios.json to a
+          non-language-specific directory.  -->
+    <string name="assets_subdir">en</string>
+
+    <string name="no_time">&#8211;</string>
+
+    <string name="pref_show_ks_scenarios">Show Scenarios 16-20</string>
+    <string name="pref_show_ks_scenarios_summary">Display scenarios 16-20, available from IELLO.</string>
+    <string name="pref_show_timer">Show Timer</string>
+    <string name="pref_show_timer_summary">Display the time remaining in a scenario.</string>
+    <string name="pref_show_growl_timer">Show Next Growl</string>
+    <string name="pref_show_growl_timer_summary">Display the time remaining until the next zombie growl in a scenario.</string>
+    <string name="pref_show_ff_rew">Show Fast Forward/Rewind</string>
+    <string name="pref_show_ff_rew_summary">Show controls for fiddling with the time remaining in a scenario, probably only useful during development.</string>
+
+    <!--  This is just a placeholder used in layouts to keep from getting
+          warnings from Android Studio; if a user sees this string, something
+          has gone horribly wrong.  -->
+    <string name="sample">Sample</string>
+</resources>

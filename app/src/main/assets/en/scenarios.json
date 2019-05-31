@@ -1,0 +1,126 @@
+[
+  {
+    "id": "1",
+    "name": "The End of Innocence - Part 1",
+    "difficulty": "prologue",
+    "soundtrack": "nogrowl"
+  }, {
+    "id": "2",
+    "name": "The End of Innocence - Part 2",
+    "difficulty": "prologue",
+    "zombieDeck": "scenario2",
+    "soundtrack": "growl60"
+  }, {
+    "id": "3",
+    "name": "The Horde",
+    "difficulty": "beginner",
+    "zombieDeck": "scenario3",
+    "soundtrack": "growl60"
+  }, {
+    "id": "4",
+    "name": "Let's Go To The Mall",
+    "difficulty": "beginner",
+    "zombieDeck": "standard",
+    "soundtrack": "growl60"
+  }, {
+    "id": "5",
+    "name": "High Security",
+    "difficulty": "beginner",
+    "zombieDeck": "standard",
+    "soundtrack": "growl60"
+  }, {
+    "id": "6",
+    "name": "High Tide",
+    "difficulty": "survivor",
+    "zombieDeck": "standard",
+    "soundtrack": "growl60"
+  }, {
+    "id": "7",
+    "name": "Nightfall",
+    "difficulty": "survivor",
+    "zombieDeck": "standard",
+    "soundtrack": "growl60"
+  }, {
+    "id": "8",
+    "name": "Walk in the Moonlight",
+    "difficulty": "survivor",
+    "zombieDeck": "standard",
+    "soundtrack": "growl60"
+  }, {
+    "id": "9",
+    "name": "Tower Defense",
+    "difficulty": "survivor",
+    "zombieDeck": "standardLetters",
+    "soundtrack": "growl60"
+  }, {
+    "id": "10",
+    "name": "The Old \"Out Of Gas\" Routine",
+    "difficulty": "survivor",
+    "zombieDeck": "standard",
+    "soundtrack": "growl60"
+  }, {
+    "id": "11",
+    "name": "The Gates of Avalon",
+    "difficulty": "hero",
+    "zombieDeck": "standardLetters",
+    "soundtrack": "growl40",
+    "cardsPerGrowl": 2
+  }, {
+    "id": "12",
+    "name": "Stocking Up",
+    "difficulty": "hero",
+    "zombieDeck": "standardEvents",
+    "soundtrack": "growl40"
+  }, {
+    "id": "13",
+    "name": "Trapped",
+    "difficulty": "hero",
+    "zombieDeck": "standardLettersEvents",
+    "soundtrack": "growl60",
+    "cardsPerGrowl": 2
+  }, {
+    "id": "14",
+    "name": "The Safehouse",
+    "difficulty": "hero",
+    "zombieDeck": "standardEvents",
+    "soundtrack": "growl40"
+  }, {
+    "id": "15",
+    "name": "The Alpha",
+    "difficulty": "hero",
+    "zombieDeck": "standardEvents",
+    "soundtrack": "growl40"
+  }, {
+    "id": "16",
+    "name": "The Decoy",
+    "difficulty": "hero",
+    "zombieDeck": "standardEvents",
+    "soundtrack": "growl40"
+  }, {
+    "id": "17",
+    "name": "The Return of the Teen",
+    "difficulty": "hero",
+    "zombieDeck": "standardLettersEvents",
+    "soundtrack": "growl40",
+    "cardsPerGrowl": 2
+  }, {
+    "id": "18",
+    "name": "We Need Big Guns",
+    "difficulty": "hero",
+    "zombieDeck": "standardEvents",
+    "soundtrack": "growl40"
+  }, {
+    "id": "19",
+    "name": "The Siege",
+    "difficulty": "hero",
+    "zombieDeck": "standardLettersEvents",
+    "soundtrack": "growl60",
+    "cardsPerGrowl": 2
+  }, {
+    "id": "20",
+    "name": "Rescue",
+    "difficulty": "hero",
+    "zombieDeck": "standardEvents",
+    "soundtrack": "growl40"
+  }
+]
