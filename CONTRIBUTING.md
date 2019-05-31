@@ -48,9 +48,7 @@ To add a new soundtrack, I *think* this is what you have to do:
 
 ### The launch icon
 
-I know the big red "15" launch icon doesn't meet the Google
+I know the big red & white "15" launch icon doesn't meet the Google
 [design specifications](https://developer.android.com/google-play/resources/icon-design-specifications),
 but I like it better than the smaller-red-15 over a busy background (an
-image from the box cover).  (It doesn't display quite the way I want on
-my tablet, which is newer than my phone, so maybe I'll just give up and
-let Android Studio generate the icon the way it wants.)
+image from the box cover).
