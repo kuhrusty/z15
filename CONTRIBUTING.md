@@ -28,8 +28,9 @@ but I haven't tried using them or the instructions in this section.
 
 Note that, originally, I was using the MP3s from IELLO's download page,
 but I was having some weird problems related to seeking within the
-files.  Once I switched to Ogg Vorbis, those problems went away, so be
-careful about using the alternate MP3s.
+files.  Once I switched to Ogg Vorbis (ripped from the CD which came
+with the game), those problems went away, so be careful about using the
+alternate MP3s.
 
 To add a new soundtrack, I *think* this is what you have to do:
 
