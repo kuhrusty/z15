@@ -179,7 +179,7 @@
         android:text="@string/sample"
         android:textColor="@android:color/white"
         android:textSize="@dimen/scenario_list_font_size"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/playButton"
         app:layout_constraintStart_toEndOf="@id/playButton"
         app:layout_constraintEnd_toEndOf="parent"

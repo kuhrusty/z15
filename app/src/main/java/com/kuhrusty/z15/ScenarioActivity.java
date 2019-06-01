@@ -38,7 +38,8 @@ public class ScenarioActivity extends AppCompatActivity
     private static final String BUNDLE_ZOMBIE_DECK = "zombieDeck";
 
     private ImageButton playBtn;
-    private TextView timeRemaining;  //  null if we're not displaying it
+    private boolean showTimeRemaining = false;
+    private TextView timeRemaining;
     private TextView nextGrowl;  //  null if we're not displaying it
     private TextView diagnostics;  //  null if we're not displaying them
     private String timeFormatString;
@@ -67,7 +68,7 @@ public class ScenarioActivity extends AppCompatActivity
         public void run() {
             if (mediaPlayer != null) {
                 audioPositionMS = mediaPlayer.getCurrentPosition();
-                if (timeRemaining != null) {
+                if (timeRemaining.getVisibility() == View.VISIBLE) {
                     timeRemaining.setText(formatTime(scenarioEndMS - audioPositionMS));
                 }
                 if (nextGrowl != null) {
@@ -159,13 +160,11 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
         }
 
         playBtn = findViewById(R.id.playButton);
+        timeRemaining = findViewById(R.id.timeRemaining);
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         if (sp != null) {
-            if (sp.getBoolean(SettingsActivity.PREF_SHOW_TIMER, false)) {
-                timeRemaining = findViewById(R.id.timeRemaining);
-                if (timeRemaining != null) timeRemaining.setVisibility(View.VISIBLE);
-            }
+            showTimeRemaining = sp.getBoolean(SettingsActivity.PREF_SHOW_TIMER, false);
             if (sp.getBoolean(SettingsActivity.PREF_SHOW_GROWL_TIMER, false)) {
                 nextGrowl = findViewById(R.id.nextGrowl);
                 if (nextGrowl != null) nextGrowl.setVisibility(View.VISIBLE);
@@ -186,9 +185,7 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.setOnSeekCompleteListener(this);
         audioDurationMS = mediaPlayer.getDuration();
-        if (timeRemaining != null) {
-            timeRemaining.setText(formatTime(scenarioEndMS - audioPositionMS));
-        }
+        timeRemaining.setText(formatTime(scenarioEndMS - audioPositionMS));
         if (nextGrowl != null) {
             nextGrowl.setText(formatTime(nextGrowlMS - audioPositionMS));
         }
@@ -266,6 +263,16 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
         mediaPlayer.pause();
         timeUpdateThread = null;
         playBtn.setImageResource(ic_media_play);
+        if (timeRemaining.getVisibility() != View.VISIBLE) {
+            timeRemaining.setText(formatTime(scenarioEndMS - audioPositionMS));
+            timeRemaining.setVisibility(View.VISIBLE);
+        }
+        //  It looks weird to have timeRemaining not in sync with nextGrowl, but
+        //  that can happen because nextGrowl may not have been updated in up to
+        //  500ms.  So, update it here too.
+        if (nextGrowl != null) {
+            nextGrowl.setText(formatTime(nextGrowlMS - audioPositionMS));
+        }
         Log.d(LOGBIT, "paused at " + audioPositionMS);
 
         View container = findViewById(R.id.zombiecards);
@@ -288,6 +295,7 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
         //  We want the device to stay on while we're running.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         playBtn.setImageResource(ic_media_pause);
+        if (!showTimeRemaining) timeRemaining.setVisibility(View.GONE);
         Log.d(LOGBIT, "seeking to " + audioPositionMS);
         mediaPlayer.seekTo(audioPositionMS);
         //  In our onSeekComplete() is where we start playing the sound &

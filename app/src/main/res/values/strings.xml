@@ -24,8 +24,8 @@
 
     <string name="pref_show_ks_scenarios">Show Scenarios 16-20</string>
     <string name="pref_show_ks_scenarios_summary">Display scenarios 16-20, available from IELLO.</string>
-    <string name="pref_show_timer">Show Timer</string>
-    <string name="pref_show_timer_summary">Display the time remaining in a scenario.</string>
+    <string name="pref_show_timer">Show Timer During Scenario</string>
+    <string name="pref_show_timer_summary">Display the time remaining while the soundtrack is playing.</string>
     <string name="pref_show_growl_timer">Show Next Growl</string>
     <string name="pref_show_growl_timer_summary">Display the time remaining until the next zombie growl in a scenario.</string>
     <string name="pref_show_ff_rew">Show Fast Forward/Rewind</string>
