@@ -440,7 +440,7 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
         fmtDiagTime(rv, scenarioEndMS);
         rv.append(", dur ");
         fmtDiagTime(rv, dur);
-        rv.append(", zd " + (zombieDeck != null ? zombieDeck.cardsRemaining() : -1));
+        rv.append(", zd ").append(zombieDeck != null ? zombieDeck.cardsRemaining() : -1);
         return rv.toString();
     }
     private void fmtDiagTime(StringBuilder buf, int ms) {
