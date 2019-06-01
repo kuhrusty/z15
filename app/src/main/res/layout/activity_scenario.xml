@@ -53,22 +53,43 @@
             android:layout_height="0dp"
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/zombiecard2_number"
-            app:layout_constraintEnd_toStartOf="@+id/zombiecard1_letter"
+            app:layout_constraintEnd_toStartOf="@+id/zombiecard1_other"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/zombie_1"/>
 
-        <ImageView
-            android:id="@+id/zombiecard1_letter"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/zombiecard1_other"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@id/zombiecard2_number"
+            app:layout_constraintBottom_toBottomOf="@id/zombiecard1_number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/zombiecard1_number"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/zombie_a"/>
+            app:layout_constraintStart_toEndOf="@id/zombiecard1_number"
+            app:layout_constraintTop_toTopOf="@id/zombiecard1_number">
+
+            <ImageView
+                android:id="@+id/zombiecard1_letter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/zombiecard1_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zombie_a"/>
+
+            <ImageView
+                android:id="@+id/zombiecard1_event"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/zombiecard1_letter"
+                app:srcCompat="@drawable/terror"/>
+        </android.support.constraint.ConstraintLayout>
 
         <ImageView
             android:id="@+id/zombiecard2_number"
@@ -76,21 +97,43 @@
             android:layout_height="0dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/zombiecard2_letter"
+            app:layout_constraintEnd_toStartOf="@+id/zombiecard2_other"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/zombiecard1_number"
             app:srcCompat="@drawable/zombie_1"/>
 
-        <ImageView
-            android:id="@+id/zombiecard2_letter"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/zombiecard2_other"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/zombiecard2_number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/zombiecard2_number"
-            app:layout_constraintTop_toBottomOf="@id/zombiecard1_number"
-            app:srcCompat="@drawable/zombie_a"/>
+            app:layout_constraintStart_toEndOf="@id/zombiecard2_number"
+            app:layout_constraintTop_toTopOf="@id/zombiecard2_number">
+
+            <ImageView
+                android:id="@+id/zombiecard2_letter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/zombiecard2_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zombie_a"/>
+
+            <ImageView
+                android:id="@+id/zombiecard2_event"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/zombiecard2_letter"
+                app:srcCompat="@drawable/terror"/>
+        </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
 

@@ -318,13 +318,15 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
         ZombieCard card = zombieDeck.drawCard();
         if (card != null) {
             setNumber(R.id.zombiecard1_number, card.getZombies());
-            setLetter(R.id.zombiecard1_letter, card.getLetter());
+            setOther(R.id.zombiecard1_other, R.id.zombiecard1_letter,
+                    card.getLetter(), R.id.zombiecard1_event, card.getEvent());
         }
         if (scenario.getCardsPerGrowl() == 2) {
             card = zombieDeck.drawCard();
             if (card != null) {
                 setNumber(R.id.zombiecard2_number, card.getZombies());
-                setLetter(R.id.zombiecard2_letter, card.getLetter());
+                setOther(R.id.zombiecard2_other, R.id.zombiecard2_letter,
+                        card.getLetter(), R.id.zombiecard2_event, card.getEvent());
             }
         }
         View container = findViewById(R.id.zombiecards);
@@ -353,23 +355,43 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
             iv.setVisibility(View.GONE);
         }
     }
-    private void setLetter(int viewID, String letter) {
-        int resID = 0;
-        ImageView iv = findViewById(viewID);
+    private void setOther(int containerViewID, int letterViewID, String letter,
+                          int eventViewID, ZombieCard.Event event) {
+        int lvResID = 0;
+        int evResID = 0;
         if (letter != null) {
             switch (letter) {
-                case "A": resID = R.drawable.zombie_a; break;
-                case "B": resID = R.drawable.zombie_b; break;
-                case "C": resID = R.drawable.zombie_c; break;
-                case "D": resID = R.drawable.zombie_d; break;
+                case "A": lvResID = R.drawable.zombie_a; break;
+                case "B": lvResID = R.drawable.zombie_b; break;
+                case "C": lvResID = R.drawable.zombie_c; break;
+                case "D": lvResID = R.drawable.zombie_d; break;
             }
         }
-        if (resID != 0) {
-            iv.setImageResource(resID);
+        if (event != null) {
+            switch (event) {
+                case LoseItem: evResID = R.drawable.lose_item; break;
+                case SneakAttack: evResID = R.drawable.sneak_attack; break;
+                case Surge: evResID = R.drawable.surge; break;
+                case Terror: evResID = R.drawable.terror; break;
+            }
+        }
+
+        ImageView iv = findViewById(letterViewID);
+        if (lvResID != 0) {
+            iv.setImageResource(lvResID);
             iv.setVisibility(View.VISIBLE);
         } else {
             iv.setVisibility(View.GONE);
         }
+        iv = findViewById(eventViewID);
+        if (evResID != 0) {
+            iv.setImageResource(evResID);
+            iv.setVisibility(View.VISIBLE);
+        } else {
+            iv.setVisibility(View.GONE);
+        }
+        View cv = findViewById(containerViewID);
+        cv.setVisibility(((lvResID != 0) || (evResID != 0)) ? View.VISIBLE : View.GONE);
     }
 
     /**
