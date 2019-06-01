@@ -35,6 +35,7 @@ public class ScenarioActivity extends AppCompatActivity
 
     private static final String BUNDLE_SCENARIO_ID = "scenarioID";
     private static final String BUNDLE_AUDIO_POSITION = "audioPositionMS";
+    private static final String BUNDLE_ZOMBIE_DECK = "zombieDeck";
 
     private ImageButton playBtn;
     private TextView timeRemaining;  //  null if we're not displaying it
@@ -113,8 +114,13 @@ Toast.makeText(ScenarioActivity.this, "need to display scenario over graphic!", 
         if (savedInstanceState != null) {
             scenarioID = savedInstanceState.getString(BUNDLE_SCENARIO_ID);
             audioPositionMS = savedInstanceState.getInt(BUNDLE_AUDIO_POSITION, audioPositionMS);
+            //  may be null
+            zombieDeck = savedInstanceState.getParcelable(BUNDLE_ZOMBIE_DECK);
             Log.d(LOGBIT, "onCreate() savedInstanceState, scenarioID " +
                     scenarioID + ", audioPositionMS " + audioPositionMS);
+            //if (zombieDeck != null) {
+            //    Log.d(LOGBIT, zombieDeck.dump().toString());
+            //}
         } else {
             Intent intent = getIntent();
             if (intent != null) {
@@ -204,6 +210,7 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         if (scenario != null) savedInstanceState.putString(BUNDLE_SCENARIO_ID, scenario.getID());
+        if (zombieDeck != null) savedInstanceState.putParcelable(BUNDLE_ZOMBIE_DECK, zombieDeck);
         savedInstanceState.putInt(BUNDLE_AUDIO_POSITION, audioPositionMS);
     }
 
@@ -425,6 +432,7 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
         fmtDiagTime(rv, scenarioEndMS);
         rv.append(", dur ");
         fmtDiagTime(rv, dur);
+        rv.append(", zd " + (zombieDeck != null ? zombieDeck.cardsRemaining() : -1));
         return rv.toString();
     }
     private void fmtDiagTime(StringBuilder buf, int ms) {

@@ -1,18 +1,26 @@
 package com.kuhrusty.z15.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Manages a scenario's Zombie Deck.
  */
-public class ZombieDeck {
+public class ZombieDeck implements Parcelable {
     /**
      * Creates a fresh-from-shrink, unshuffled deck.  To prepare it for a
      * scenario, pass it to the appropriate ZombieDeckShuffler.
      */
     public ZombieDeck() {
         initStandardDeck();
+    }
+
+    private ZombieDeck(Parcel in) {
+        pos = in.readInt();
+        in.readTypedList(cards, ZombieCard.CREATOR);
     }
 
     /**
@@ -23,6 +31,14 @@ public class ZombieDeck {
             return cards.get(pos++);
         }
         return null;
+    }
+
+    /**
+     * Restores the draw position back to the beginning of the shuffle;
+     * basically returns the cards to the deck in the order they were drawn.
+     */
+    public void undrawAll() {
+        pos = 0;
     }
 
     /**
@@ -116,6 +132,24 @@ public class ZombieDeck {
 
         //  Horde cards
         for (int ii = 0; ii < 8; ++ii) cards.add(new ZombieCard());
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(pos);
+        parcel.writeTypedList(cards);
+    }
+    public static final Creator<ZombieDeck> CREATOR = new Creator<ZombieDeck>() {
+        public ZombieDeck createFromParcel(Parcel in) {
+            return new ZombieDeck(in);
+        }
+        public ZombieDeck[] newArray(int size) {
+            return new ZombieDeck[size];
+        }
+    };
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     private List<ZombieCard> cards = new ArrayList<>(48);

@@ -1,9 +1,12 @@
 package com.kuhrusty.z15.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * One card in the Zombie Cards deck.
  */
-public class ZombieCard {
+public class ZombieCard implements Parcelable {
     public enum Event {
         LoseItem,
         SneakAttack,
@@ -79,5 +82,37 @@ public class ZombieCard {
      */
     public void clearEvent() {
         event = null;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(zombies);
+        parcel.writeInt(letter != null ? letter.charAt(0) : 0);
+        parcel.writeInt(event != null ? event.ordinal() : -1);
+    }
+    public static final Creator<ZombieCard> CREATOR = new Creator<ZombieCard>() {
+        public ZombieCard createFromParcel(Parcel in) {
+            int zombies = in.readInt();
+            String letter = null;
+            switch (in.readInt()) {
+                case 'A': letter = "A"; break;
+                case 'B': letter = "B"; break;
+                case 'C': letter = "C"; break;
+                case 'D': letter = "D"; break;
+            }
+            int ti = in.readInt();
+            Event event = null;
+            if ((ti >= 0) && (ti < Event.values().length)) {
+                event = Event.values()[ti];
+            }
+            return new ZombieCard(zombies, letter, event);
+        }
+        public ZombieCard[] newArray(int size) {
+            return new ZombieCard[size];
+        }
+    };
+    @Override
+    public int describeContents() {
+        return 0;
     }
 }
