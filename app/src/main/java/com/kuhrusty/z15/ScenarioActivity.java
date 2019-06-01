@@ -79,6 +79,10 @@ public class ScenarioActivity extends AppCompatActivity
                     doGrowl();
                     nextGrowlMS = soundtrack.getNextGrowl(audioPositionMS);
                 } else if ((scenarioEndMS != -1) && (audioPositionMS > scenarioEndMS)) {
+                    pauseAudio();
+                    audioPositionMS = 0;
+                    //  can that get screwed with asynchronously, causing us to
+                    //  forget that we need to re-prepare the deck in playAudio()?
 Toast.makeText(ScenarioActivity.this, "need to display scenario over graphic!", Toast.LENGTH_SHORT).show();
                     scenarioEndMS = -1;  //  so we know we've displayed it
                 }
@@ -132,11 +136,6 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
                 audioResID = soundtrack.getAudioResID();
                 nextGrowlMS = soundtrack.getNextGrowl(audioPositionMS);
                 scenarioEndMS = soundtrack.getEndMS();
-
-                if (scenario.getZombieDeckShuffler() != null) {
-                    zombieDeck = new ZombieDeck();
-                    scenario.getZombieDeckShuffler().shuffle(zombieDeck);
-                }
 
                 TextView tv = findViewById(R.id.scenarioName);
                 //  copied from ScenarioListAdapter.onBindViewHolder(); you
@@ -272,6 +271,13 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
     private void playAudio() {
         if (playingAudio) return;
         playingAudio = true;
+        //  If our time is at 0, prepare the Zombie deck.  This can happen
+        //  multiple times if we run out of time and restart the scenario.
+        if ((audioPositionMS == 0) && (scenario.getZombieDeckShuffler() != null)) {
+            Log.d(LOGBIT, "preparing Zombie Deck");
+            zombieDeck = new ZombieDeck();
+            scenario.getZombieDeckShuffler().shuffle(zombieDeck);
+        }
         //  We want the device to stay on while we're running.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         playBtn.setImageResource(ic_media_pause);
@@ -291,7 +297,10 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
     }
 
     /**
-     * Called when our MediaPlayer finishes playing its current sound.
+     * Called when our MediaPlayer finishes playing its current sound.  I'm not
+     * sure this actually gets hit anymore, as theoretically we're stopping
+     * playback when we reach the end of the scenario, which (at least in the
+     * soundtracks we have) is several seconds before the end of the soundtrack.
      */
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
