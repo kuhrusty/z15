@@ -51,7 +51,8 @@
     "name": "Tower Defense",
     "difficulty": "survivor",
     "zombieDeck": "standardLetters",
-    "soundtrack": "growl60"
+    "soundtrack": "growl60",
+    "cardsPerGrowl": 2
   }, {
     "id": "10",
     "name": "The Old \"Out Of Gas\" Routine",
