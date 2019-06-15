@@ -10,6 +10,7 @@ public class Scenario {
     private Soundtrack.Type soundtrack;
     private ZombieDeckShuffler zdShuffler;
     private int cardsPerGrowl = 1;
+    private Map map;
 
     public String getID() {
         return id;
@@ -54,5 +55,12 @@ public class Scenario {
     }
     public void setCardsPerGrowl(int cardsPerGrowl) {
         this.cardsPerGrowl = cardsPerGrowl;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+    public void setMap(Map map) {
+        this.map = map;
     }
 }

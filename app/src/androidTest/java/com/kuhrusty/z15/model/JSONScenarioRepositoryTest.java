@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.kuhrusty.z15.R;
 import com.kuhrusty.z15.SettingsActivity;
 
 import org.junit.After;
@@ -14,7 +15,13 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
+import static com.kuhrusty.z15.model.Tile.Direction.East;
+import static com.kuhrusty.z15.model.Tile.Direction.North;
+import static com.kuhrusty.z15.model.Tile.Direction.West;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class JSONScenarioRepositoryTest {
@@ -63,6 +70,16 @@ public class JSONScenarioRepositoryTest {
         check(ts, "13", "Trapped",
                 Scenario.Difficulty.Hero, Shufflers.StandardLettersEvents,
                 Soundtrack.Type.Growl60, 2);
+
+        ts = sr.getScenario("10");
+        Map map = ts.getMap();
+        assertNotNull(map);
+        assertEquals(7, map.getWidth());
+        assertEquals(4, map.getHeight());
+        assertNull(map.getTile(0, 0));
+        check(map.getTile(0, 1), "31-A", R.drawable.tile07a, East);
+        check(map.getTile(1, 1), "11-B", R.drawable.tile11b, West, North);
+        assertNull(map.getTile(6, 0));
     }
 
     public static void check(Scenario got, String expectID, String expectName,
@@ -76,5 +93,15 @@ public class JSONScenarioRepositoryTest {
         assertEquals(expectShuffler, got.getZombieDeckShuffler());
         assertEquals(expectSoundtrackType, got.getSoundtrackType());
         assertEquals(expectCardsPerGrowl, got.getCardsPerGrowl());
+    }
+
+    public static void check(Tile got, String expectID, int expectImgResID,
+                             Tile.Direction... expectRoads) {
+        assertEquals(expectID, got.getID());
+        assertEquals(expectImgResID, got.getTileImageResID());
+        assertEquals(expectRoads.length, got.getRoadCount());
+        for (int ii = 0; ii < expectRoads.length; ++ii) {
+            assertTrue(got.hasRoad(expectRoads[ii]));
+        }
     }
 }

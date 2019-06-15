@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -22,11 +23,21 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static com.kuhrusty.z15.model.Tile.Direction.East;
+import static com.kuhrusty.z15.model.Tile.Direction.North;
+import static com.kuhrusty.z15.model.Tile.Direction.South;
+import static com.kuhrusty.z15.model.Tile.Direction.West;
 
 public class JSONScenarioRepository implements ScenarioRepository {
     private static final String LOGBIT = "JSONScenarioRepository";
     private List<Scenario> cache;
     private Context context;
+
+    private static final Pattern Blank = Pattern.compile("^_+$");
+    private static final Pattern TileID = Pattern.compile("^(\\d+)-?([AB])$");
 
     JSONScenarioRepository(Context context) {
         this.context = context;
@@ -74,8 +85,67 @@ public class JSONScenarioRepository implements ScenarioRepository {
             if ((te = obj.get("cardsPerGrowl")) != null) {
                 rv.setCardsPerGrowl(te.getAsInt());
             }
+            //  Map stuff
+            JsonArray ta = obj.getAsJsonArray("map");
+            if (ta != null) {
+                List<List<Tile>> rows = new ArrayList<>(ta.size());
+                for (int row = 0; row < ta.size(); ++row) {
+                    //  (0, 0) is at the bottom of the map, so run backward
+                    //  through the list of elements.
+                    rows.add(parseMapRow(rv, row, ta.get(ta.size() - row - 1).getAsString()));
+                }
+                rv.setMap(new Map(rows));
+            }
             return rv;
         }
+    }
+
+    private static ArrayList<Tile> parseMapRow(Scenario scenario, int row, String line) {
+        ArrayList<Tile> rv = new ArrayList<>();
+        String[] bits = line.split(" +");
+        for (int bi = 0; bi < bits.length; ++bi) {
+            String bit = bits[bi];
+            Matcher tm = null;
+            if (bit.equals("")) continue;
+            else if ((tm = Blank.matcher(bit)).find()) {
+                rv.add(null);
+                continue;
+            } else if ((tm = TileID.matcher(bit)).find()) {
+                String id = tm.group(1) + "-" + tm.group(2);
+                ++bi;
+                if (bi == bits.length) {
+                    throw new JsonParseException("Scenario " + scenario.getID() +
+                            " map row " + row + ": missing final direction");
+                }
+                bit = bits[bi];
+                Tile.Direction td;
+                switch (bit) {
+                    case "N": td = North; break;
+                    case "E": td = East; break;
+                    case "S": td = South; break;
+                    case "W": td = West; break;
+                    default: throw new JsonParseException("Scenario " +
+                            scenario.getID() + " map row " + row +
+                            ": bad direction \"" + bit + "\"");
+                }
+                Tile tt = Tile.getTile(id);
+                if (tt == null) {
+                    throw new JsonParseException("Scenario " + scenario.getID() +
+                            ": bad tile ID \"" + id + "\"");
+                }
+                //  uhh... just because I feel like multiple scenarios fiddling
+                //  with the same Tile instances was causing rotation problems,
+                //  let's make a copy.
+                tt = new Tile(tt);
+                tt.setRotation(td);
+                rv.add(tt);
+            } else {
+                throw new JsonParseException("Scenario " + scenario.getID() +
+                        " map row " + row + ": failed to parse tile ID \"" +
+                        bit + "\"");
+            }
+        }
+        return rv;
     }
 
     private static GsonBuilder newGsonBuilder() {
