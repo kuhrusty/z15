@@ -20,12 +20,15 @@ import com.kuhrusty.z15.model.RepositoryFactory;
 import com.kuhrusty.z15.model.Soundtrack;
 import com.kuhrusty.z15.model.ZombieCard;
 import com.kuhrusty.z15.model.ZombieDeck;
-
-import java.util.Locale;
+import com.kuhrusty.z15.ui.UIUtil;
 
 import static android.R.drawable.ic_media_pause;
 import static android.R.drawable.ic_media_play;
 
+/**
+ * This plays the soundtrack & manages the Zombie deck for a running scenario;
+ * scenario setup stuff is handled by SetupScenarioActivity.
+ */
 public class ScenarioActivity extends AppCompatActivity
         implements MediaPlayer.OnCompletionListener,
                    MediaPlayer.OnSeekCompleteListener {
@@ -144,18 +147,8 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
                 nextGrowlMS = soundtrack.getNextGrowl(audioPositionMS);
                 scenarioEndMS = soundtrack.getEndMS();
 
-                TextView tv = findViewById(R.id.scenarioName);
-                //  copied from ScenarioListAdapter.onBindViewHolder(); you
-                //  should probably put this in one place.
-                tv.setText(String.format(Locale.getDefault(),
-                        getString(R.string.scenario_format), scenario.getID(), scenario.getName()));
-                if (scenario.getDifficulty().equals(Scenario.Difficulty.Hero)) {
-                    tv.setBackground(getResources().getDrawable(R.drawable.red_gradient));
-                } else if (scenario.getDifficulty().equals(Scenario.Difficulty.Survivor)) {
-                    tv.setBackground(getResources().getDrawable(R.drawable.green_gradient));
-                } else {
-                    tv.setBackground(getResources().getDrawable(R.drawable.blue_gradient));
-                }
+                UIUtil.formatScenarioTitle(
+                        (TextView)(findViewById(R.id.scenarioName)), scenario);
             }
         }
 

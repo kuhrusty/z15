@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.kuhrusty.z15.model.RepositoryFactory;
 import com.kuhrusty.z15.model.Scenario;
 import com.kuhrusty.z15.model.ScenarioRepository;
+import com.kuhrusty.z15.ui.UIUtil;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * This handles the display of the list of Scenarios in MainActivity.  It
@@ -77,15 +77,7 @@ public class ScenarioListAdapter
     public void onBindViewHolder(@NonNull ScenarioViewHolder holder, int position) {
         Scenario scenario = scenarios.get(position);
         holder.scenarioID = scenario.getID();
-        holder.name.setText(String.format(Locale.getDefault(),
-                activity.getString(R.string.scenario_format), scenario.getID(), scenario.getName()));
-        if (scenario.getDifficulty().equals(Scenario.Difficulty.Hero)) {
-            holder.name.setBackground(activity.getResources().getDrawable(R.drawable.red_gradient));
-        } else if (scenario.getDifficulty().equals(Scenario.Difficulty.Survivor)) {
-            holder.name.setBackground(activity.getResources().getDrawable(R.drawable.green_gradient));
-        } else {
-            holder.name.setBackground(activity.getResources().getDrawable(R.drawable.blue_gradient));
-        }
+        UIUtil.formatScenarioTitle(holder.name, scenario);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
