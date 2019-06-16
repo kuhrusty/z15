@@ -13,6 +13,9 @@ bin/
 gen/
 out/
 
+#  Garbage files added by Rusty
+tmp/
+
 # Gradle files
 .gradle/
 build/
