@@ -19,6 +19,14 @@ The scenario list:
 
 ![Scenario List](doc/main.25.jpg)
 
+Selecting a scenario gives you the map tile setup screen, where you can
+step through the tiles in numerical order, or tap on a tile to see a
+magnified view:
+
+![Scenario Setup](doc/setup_animation.gif)
+
+The "Start" button takes you to the soundtrack screen.  
+
 Here's a running scenario.  When a Zombie card is drawn, letters and
 events are only displayed for scenarios which use them:
 
