@@ -9,6 +9,10 @@
           this.  -->
     <string name="scenario_format">%1s. %2s</string>
 
+    <string name="setup_scenario_onboarding_title">Welcome!</string>
+    <string name="setup_scenario_onboarding">Use the buttons to step through the tiles in numerical order; tap on any tile to see a magnified view.</string>
+    <string name="got_it">Got it!</string>
+
     <string name="map_title">Map Tiles</string>
 
     <string name="start_scenario">Start</string>
@@ -34,6 +38,8 @@
     <string name="pref_show_growl_timer_summary">Display the time remaining until the next zombie growl in a scenario.</string>
     <string name="pref_show_ff_rew">Show Fast Forward/Rewind</string>
     <string name="pref_show_ff_rew_summary">Show controls for fiddling with the time remaining in a scenario, probably only useful during development.</string>
+    <string name="pref_setup_scenario_onboarding_shown">Scenario Setup welcome shown</string>
+    <string name="pref_setup_scenario_onboarding_shown_summary">Turn off if you want to see the Scenario Setup welcome message again.</string>
 
     <!--  This is just a placeholder used in layouts to keep from getting
           warnings from Android Studio; if a user sees this string, something

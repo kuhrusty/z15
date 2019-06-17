@@ -25,4 +25,10 @@
         android:summary="@string/pref_show_ff_rew_summary"
         android:defaultValue="false"/>
 
+    <SwitchPreference
+        android:key="pref_setup_scenario_onboarding_shown"
+        android:title="@string/pref_setup_scenario_onboarding_shown"
+        android:summary="@string/pref_setup_scenario_onboarding_shown_summary"
+        android:defaultValue="false"/>
+
 </PreferenceScreen>

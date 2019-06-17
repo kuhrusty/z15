@@ -1,7 +1,10 @@
 package com.kuhrusty.z15;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -96,6 +99,7 @@ public class SetupScenarioActivity extends AppCompatActivity {
                 onShowNextTileClicked(null);
             }
         }
+        showOnboarding();
     }
 
     @Override
@@ -152,5 +156,29 @@ public class SetupScenarioActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ScenarioActivity.class);
         intent.putExtra(INTENT_SCENARIO_ID, scenario.getID());
         startActivity(intent);
+    }
+
+    //  copied from Morbad Scorepad MainActivity.showCopyrightWarning()
+    private void showOnboarding() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String key = "pref_setup_scenario_onboarding_shown";  //  not exactly a *preference*...
+        boolean shown = false;
+        if ((prefs != null) && (!prefs.getBoolean(key, false))) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.setup_scenario_onboarding_title);
+            builder.setMessage(R.string.setup_scenario_onboarding);
+            builder.setPositiveButton(R.string.got_it, null);
+            builder.setCancelable(false);  //  force them through positive button onClick()
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            shown = true;
+        }
+        if ((prefs != null) && shown) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean(key, true);
+            //  apply() instead of commit() because we don't care when it gets
+            //  written to storage.
+            editor.apply();
+        }
     }
 }
