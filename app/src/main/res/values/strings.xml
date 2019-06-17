@@ -9,6 +9,10 @@
           this.  -->
     <string name="scenario_format">%1s. %2s</string>
 
+    <string name="map_title">Map Tiles</string>
+
+    <string name="start_scenario">Start</string>
+
     <!--  The format string for the amount of time remaining in a scenario or
           until the next growl.  -->
     <string name="time_format">%d:%02d</string>

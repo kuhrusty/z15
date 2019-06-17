@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startScenario(String scenarioID) {
-        Intent intent = new Intent(this, ScenarioActivity.class);
+        Intent intent = new Intent(this, SetupScenarioActivity.class);
         intent.putExtra(ScenarioActivity.INTENT_SCENARIO_ID, scenarioID);
         startActivity(intent);
     }

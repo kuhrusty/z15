@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--  This guy is mostly copied from list_scenario.xml.  -->
+    <TextView
+        android:id="@+id/scenarioName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_gradient"
+        android:fontFamily="@font/bangers"
+        android:gravity="center"
+        android:paddingBottom="@dimen/scenario_list_item_padding_v"
+        android:paddingLeft="@dimen/scenario_list_item_padding_h"
+        android:paddingRight="@dimen/scenario_list_item_padding_h"
+        android:paddingTop="0dp"
+        android:text="@string/sample"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/scenario_list_font_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scenarioName"
+        app:srcCompat="@drawable/back_cover"/>
+
+    <TextView
+        android:id="@+id/tileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/bangers"
+        android:text="@string/map_title"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mapView"/>
+
+    <com.kuhrusty.z15.ui.MapView
+        android:id="@+id/mapView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tileButtons"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/tileButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/noTilesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tile_button_image"
+            android:onClick="onShowNoTilesClicked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/prevTileButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_no_tiles"/>
+
+        <ImageButton
+            android:id="@+id/prevTileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tile_button_image"
+            android:onClick="onShowPrevTileClicked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nextTileButton"
+            app:layout_constraintStart_toEndOf="@+id/noTilesButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_prev_tile"/>
+
+        <ImageButton
+            android:id="@+id/nextTileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:background="@drawable/tile_button_image"
+            android:onClick="onShowNextTileClicked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/allTilesButton"
+            app:layout_constraintStart_toEndOf="@+id/prevTileButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_next_tile"/>
+
+        <ImageButton
+            android:id="@+id/allTilesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/tile_button_image"
+            android:onClick="onShowAllTilesClicked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/startButton"
+            app:layout_constraintStart_toEndOf="@+id/nextTileButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_all_tiles"/>
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fontFamily="@font/bangers"
+            android:onClick="onStartScenarioClicked"
+            android:padding="0dp"
+            android:text="@string/start_scenario"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/allTilesButton"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
