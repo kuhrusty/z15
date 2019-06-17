@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.  The
 format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## Unreleased
+#### Added
+#### Changed
+
+
 ## [1.2] (Android versionCode 5) - 2019-06-16
 #### Added
 - Add `SetupScenarioActivity`, which displays the tiles to be set up and
