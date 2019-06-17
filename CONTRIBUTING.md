@@ -102,7 +102,7 @@ Here's an example entry:
   //  tile; otherwise, we want a tile number & letter (the dash is
   //  optional, so "1-A" will be treated the same as "1A"), one or more
   //  spaces, and an orientation ("N", "E", "S", "W").  If one row has
-  //  fewer tiles than another, empty rows at the end will be blank.
+  //  fewer tiles than another, empty columns at the end will be blank.
   "map": [
     " ____   18B E   14B S   22A S   24A S    7A S",
     "29B E   16B W   15B N   10B E   27A W    9A W   13A W",
