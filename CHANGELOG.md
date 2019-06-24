@@ -3,15 +3,13 @@
 All notable changes to this project will be documented in this file.  The
 format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
-## Unreleased
+## [1.4] (Android versionCode 9) - 2019-06-23
 #### Added
 - Add a landscape layout for the scenario screen
   ([Issue #11](https://github.com/kuhrusty/z15/issues/11)), as I can't
   stand to think of melvox having to look at the existing layout.
   (This one's not *great,* but it's sure better for landscape than what
   was there before.)
-
-#### Changed
 
 
 ## [1.3] (Android versionCode 7) - 2019-06-23
