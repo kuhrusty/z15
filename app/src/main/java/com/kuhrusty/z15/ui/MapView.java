@@ -98,8 +98,8 @@ public class MapView extends View {
         if (ev.getAction() != MotionEvent.ACTION_UP) return super.onTouchEvent(ev);
 
         Tile newSelection = null;
-        int col = (int)((ev.getX() - halfTileSize) / tileSize);
-        int maprow = (int)((ev.getY() - halfTileSize) / tileSize);
+        int col = (int)((ev.getX() - halfTileSize - hoffset) / tileSize);
+        int maprow = (int)((ev.getY() - halfTileSize - voffset) / tileSize);
         int row = map.getHeight() - maprow - 1;
         if ((row >= 0) && (row < map.getHeight()) && (col >= 0) && (col < map.getWidth())) {
             newSelection = map.getTile(col, row);
@@ -158,6 +158,10 @@ public class MapView extends View {
         lastHeight = bottom - top;
         //  should run through all TileRenderInfo, clearing scaledTileImage &
         //  scaled2xTileImage
+        hoffset = (int)(lastWidth - ((map.getWidth() + 1) * tileSize)) / 2;
+        if (hoffset < 0) hoffset = 0;
+        voffset = (int)(lastHeight - ((map.getHeight() + 1) * tileSize)) / 2;
+        if (voffset < 0) voffset = 0;
     }
 
     public void dimAll() {
@@ -225,11 +229,16 @@ public class MapView extends View {
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawRect(0, 0, lastWidth, lastHeight, mapBGPaint);
+        if (map == null) {
+            canvas.drawRect(0, 0, lastWidth, lastHeight, mapBGPaint);
+            return;
+        }
 
-        if (map == null) return;
+        canvas.drawRect(hoffset, voffset,
+                hoffset + ((map.getWidth() + 1) * tileSize),
+                voffset + ((map.getHeight() + 1) * tileSize), mapBGPaint);
 
-        canvas.translate(halfTileSize, halfTileSize);
+        canvas.translate(hoffset + halfTileSize, voffset + halfTileSize);
         canvas.save();
         for (int row = 0; row < map.getHeight(); ++row) {
             int mr = map.getHeight() - row - 1;
@@ -458,4 +467,8 @@ public class MapView extends View {
 
     private int lastWidth;
     private int lastHeight;
+    //  if our layout is bigger than we wanted/needed, then we'll center
+    //  ourselves; this is how much space we're adding on the X or Y axis.
+    private int voffset;
+    private int hoffset;
 }

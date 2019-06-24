@@ -5,6 +5,9 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 #### Added
+- Add a landscape layout for the scenario setup screen (part of
+  [Issue #11](https://github.com/kuhrusty/z15/issues/11)).
+
 #### Changed
 - [Issue #14](https://github.com/kuhrusty/z15/issues/14): add PNG
   versions of the vector graphics used for the background gradients in
