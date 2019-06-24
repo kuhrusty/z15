@@ -10,6 +10,11 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
   versions of the vector graphics used for the background gradients in
   scenario titles, as pre-API-21 versions of Android don't seem to
   support them.
+- [Issue #13](https://github.com/kuhrusty/z15/issues/13): improve
+  enlarged map tile resolution on low-density displays.  Also draw the
+  yellow highlighted-tile border inside the tile, instead of hanging
+  half outside & getting cut off when drawn up against the edge of the
+  view.
 
 
 ## [1.2] (Android versionCode 5) - 2019-06-16

@@ -6,12 +6,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -32,6 +30,8 @@ public class MapView extends View {
         private final int col;
         private Bitmap tileImage;
         private Bitmap scaledTileImage;  //  rebuild every time we do layout
+        private Bitmap scaled2xTileImage;  //  rebuild every time we do layout
+        //  whoops, no they're not!  we never clear them in layout().
 
         public TileRenderInfo(Tile tile, int col, int canvasRow, Bitmap rawImage) {
             this.tile = tile;
@@ -155,6 +155,8 @@ public class MapView extends View {
         //no idea whether I need to save this
         lastWidth = right - left;
         lastHeight = bottom - top;
+        //  should run through all TileRenderInfo, clearing scaledTileImage &
+        //  scaled2xTileImage
     }
 
     public void dimAll() {
@@ -235,7 +237,7 @@ public class MapView extends View {
             for (int col = 0; col < map.getWidth(); ++col) {
                 if (col > 0) canvas.translate(tileSize, 0);
                 Tile tt = map.getTile(col, mr);
-                if ((tt != null) && (tt != selectedTile)) paintTile(canvas, tt);
+                if ((tt != null) && (tt != selectedTile)) paintTile(canvas, tt, false);
             }
             canvas.restore();
         }
@@ -246,39 +248,57 @@ public class MapView extends View {
             canvas.save();
             canvas.translate(selectedTileX * tileSize - halfTileSize,
                              selectedTileMapY * tileSize - halfTileSize);
-            canvas.scale(2f, 2f);
-            paintTile(canvas, selectedTile);
-            canvas.drawRect(0, 0, tileSize, tileSize, selectionPaint);
+            paintTile(canvas, selectedTile, true);
+            //  Shrink the rectangle by half the width of the line, so that the
+            //  line is contained inside the tile.  Otherwise half of it gets
+            //  cut off when drawing up against the edge of the view.
+            float inset = selectionPaint.getStrokeWidth() / 2f;
+            canvas.drawRect(inset, inset, tileSize * 2 - inset, tileSize * 2 - inset, selectionPaint);
             canvas.restore();
         }
 
     }
 
-    private void paintTile(Canvas canvas, Tile tile) {
+    //  I liked enlarging this by calling canvas.scale(2f, 2f) outside of this;
+    //  that meant the logic in here was independent of what size it was being
+    //  drawn, and I could resize this however I wanted without affecting this
+    //  method.  However, on low-resolution screens, taking the scaled tile
+    //  bitmap & blowing it up 2x looked like crap (issue #13), so... make this
+    //  logic know whether it's zoomed in or not.
+    private void paintTile(Canvas canvas, Tile tile, boolean enlarged) {
+        float ts = enlarged ? tileSize * 2f : tileSize;
         TileRenderInfo tri = idToInfo.get(tile.getID());
         if (tri.tileImage != null) {
             if (tri.scaledTileImage == null) {
                 boolean whatDoesFilterMean = false;
                 tri.scaledTileImage = Bitmap.createScaledBitmap(tri.tileImage,
                         (int)tileSize, (int)tileSize, whatDoesFilterMean);
+                tri.scaled2xTileImage = Bitmap.createScaledBitmap(tri.tileImage,
+                        (int)tileSize * 2, (int)tileSize * 2, whatDoesFilterMean);
             }
             if (tile.getRotation() == Tile.Direction.East) {
                 canvas.save();
-                canvas.translate(tileSize, 0);
+                canvas.translate(ts, 0);
                 canvas.rotate(90);
             } else if (tile.getRotation() == Tile.Direction.South) {
                 canvas.save();
-                canvas.translate(tileSize, tileSize);
+                canvas.translate(ts, ts);
                 canvas.rotate(180);
             } else if (tile.getRotation() == Tile.Direction.West) {
                 canvas.save();
-                canvas.translate(0, tileSize);
+                canvas.translate(0, ts);
                 canvas.rotate(-90);
             } // else brain damage
-            canvas.drawBitmap(tri.scaledTileImage, 0, 0, tileBGPaint);
+            canvas.drawBitmap(enlarged ? tri.scaled2xTileImage :
+                            tri.scaledTileImage, 0, 0, tileBGPaint);
             if (tile.getRotation() != Tile.Direction.North) canvas.restore();
         } else {
-            canvas.drawRect(0, 0, tileSize, tileSize, tileBGPaint);
+            canvas.drawRect(0, 0, ts, ts, tileBGPaint);
+        }
+
+        if (enlarged) {
+            canvas.save();
+            canvas.scale(2f, 2f);
         }
 
         //  Not sure I could have written this more dumbly, but I want to know
@@ -376,6 +396,10 @@ public class MapView extends View {
         //  this is easy...
         if ((tile != selectedTile) && idToInfo.get(tile.getID()).dimmed) {
             canvas.drawRect(0, 0, tileSize, tileSize, dimPaint);
+        }
+
+        if (enlarged) {
+            canvas.restore();  //  undo scale
         }
     }
 
