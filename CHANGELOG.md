@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.  The
 format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## Unreleased
+#### Added
+#### Changed
+
+
 ## [1.3] (Android versionCode 7) - 2019-06-23
 #### Added
 - Add a landscape layout for the scenario setup screen (part of
