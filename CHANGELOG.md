@@ -5,6 +5,12 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 #### Added
+- Add a landscape layout for the scenario screen
+  ([Issue #11](https://github.com/kuhrusty/z15/issues/11)), as I can't
+  stand to think of melvox having to look at the existing layout.
+  (This one's not *great,* but it's sure better for landscape than what
+  was there before.)
+
 #### Changed
 
 

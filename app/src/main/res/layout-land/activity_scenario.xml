@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--  This guy is mostly copied from list_scenario.xml.  -->
+    <TextView
+        android:id="@+id/scenarioName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_gradient"
+        android:fontFamily="@font/bangers"
+        android:gravity="center"
+        android:paddingBottom="@dimen/scenario_list_item_padding_v"
+        android:paddingLeft="@dimen/scenario_list_item_padding_h"
+        android:paddingRight="@dimen/scenario_list_item_padding_h"
+        android:paddingTop="0dp"
+        android:text="@string/sample"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/scenario_list_font_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scenarioName"
+        app:srcCompat="@drawable/back_cover_land"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/zombiecards"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/playButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scenarioName">
+
+        <ImageView
+            android:id="@+id/zombiecard1_number"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/zombiecard1_other"
+            app:srcCompat="@drawable/zombie_1"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/zombiecard1_other"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/zombiecard1_number"
+            app:layout_constraintBottom_toBottomOf="@id/zombiecard1_number"
+            app:layout_constraintStart_toEndOf="@id/zombiecard1_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <ImageView
+                android:id="@+id/zombiecard1_letter"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/zombiecard1_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/zombie_a"/>
+
+            <ImageView
+                android:id="@+id/zombiecard1_event"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/zombiecard1_letter"
+                app:srcCompat="@drawable/terror"/>
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onPlayClicked"
+        app:layout_constraintBottom_toTopOf="@+id/ffControls"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play"/>
+
+    <!--  These guys also are mostly copied from list_scenario.xml.  -->
+    <TextView
+        android:id="@+id/nextGrowl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bangers"
+        android:gravity="center"
+        android:paddingBottom="@dimen/scenario_list_item_padding_v"
+        android:paddingLeft="@dimen/scenario_list_item_padding_h"
+        android:paddingRight="@dimen/scenario_list_item_padding_h"
+        android:paddingTop="0dp"
+        android:text="@string/sample"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/scenario_list_font_size"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/playButton"
+        app:layout_constraintEnd_toStartOf="@id/playButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playButton"/>
+    <TextView
+        android:id="@+id/timeRemaining"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bangers"
+        android:gravity="center"
+        android:paddingBottom="@dimen/scenario_list_item_padding_v"
+        android:paddingLeft="@dimen/scenario_list_item_padding_h"
+        android:paddingRight="@dimen/scenario_list_item_padding_h"
+        android:paddingTop="0dp"
+        android:text="@string/sample"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/scenario_list_font_size"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/playButton"
+        app:layout_constraintStart_toEndOf="@id/playButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playButton"/>
+
+    <LinearLayout
+        android:id="@+id/ffControls"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/diagnostics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/rw60Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:onClick="onRW60Clicked"
+            app:srcCompat="@android:drawable/ic_media_rew"/>
+
+        <ImageButton
+            android:id="@+id/rw10Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:onClick="onRW10Clicked"
+            app:srcCompat="@android:drawable/ic_media_rew"/>
+
+        <ImageButton
+            android:id="@+id/ff10Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:onClick="onFF10Clicked"
+            app:srcCompat="@android:drawable/ic_media_ff"/>
+
+        <ImageButton
+            android:id="@+id/ff60Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:onClick="onFF60Clicked"
+            app:srcCompat="@android:drawable/ic_media_ff"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/diagnostics"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sample"
+        android:textColor="#FDD835"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

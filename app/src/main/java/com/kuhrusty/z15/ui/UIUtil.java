@@ -13,6 +13,7 @@ public abstract class UIUtil {
      * given Scenario's name and difficulty.
      */
     public static void formatScenarioTitle(TextView tv, Scenario scenario) {
+        if ((tv == null) || (scenario == null)) return;
         tv.setText(String.format(Locale.getDefault(),
                 tv.getContext().getString(R.string.scenario_format),
                 scenario.getID(), scenario.getName()));

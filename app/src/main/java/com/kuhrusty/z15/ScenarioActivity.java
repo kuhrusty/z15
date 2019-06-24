@@ -107,7 +107,6 @@ Toast.makeText(ScenarioActivity.this, "need to display scenario over graphic!", 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scenario);
         timeFormatString = getString(R.string.time_format);
 
         //  When people hit the volume buttons, we want to change the media
@@ -147,11 +146,13 @@ Toast.makeText(this, "gackk, life is bad, no soundtrack for scenario " + scenari
                 nextGrowlMS = soundtrack.getNextGrowl(audioPositionMS);
                 scenarioEndMS = soundtrack.getEndMS();
 
-                UIUtil.formatScenarioTitle(
-                        (TextView)(findViewById(R.id.scenarioName)), scenario);
             }
         }
 
+        setContentView((scenario != null) && (scenario.getCardsPerGrowl() == 2) ?
+                R.layout.activity_scenario_2cards : R.layout.activity_scenario);
+        //  scenario may be null
+        UIUtil.formatScenarioTitle((TextView)(findViewById(R.id.scenarioName)), scenario);
         playBtn = findViewById(R.id.playButton);
         timeRemaining = findViewById(R.id.timeRemaining);
 

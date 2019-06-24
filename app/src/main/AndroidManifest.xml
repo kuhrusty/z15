@@ -25,10 +25,8 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <!--  remove screenOrientation="portrait" - issue #11 -->
         <activity
             android:name=".ScenarioActivity"
-            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
