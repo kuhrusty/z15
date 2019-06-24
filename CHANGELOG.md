@@ -6,6 +6,10 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ## Unreleased
 #### Added
 #### Changed
+- [Issue #14](https://github.com/kuhrusty/z15/issues/14): add PNG
+  versions of the vector graphics used for the background gradients in
+  scenario titles, as pre-API-21 versions of Android don't seem to
+  support them.
 
 
 ## [1.2] (Android versionCode 5) - 2019-06-16
