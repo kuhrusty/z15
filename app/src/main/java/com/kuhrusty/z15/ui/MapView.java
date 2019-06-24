@@ -71,6 +71,7 @@ public class MapView extends View {
         tileIDPaint.setColor(Color.WHITE);
         tileIDPaint.setTextAlign(Paint.Align.CENTER);
         tileIDPaint.setShadowLayer(4.0f, 0f, 0f, Color.BLACK);
+        tileIDPaint.setAntiAlias(true);
         //  font size is set in layout()
         //probably should set shadow layer radius there, too
 

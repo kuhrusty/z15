@@ -15,6 +15,7 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
   yellow highlighted-tile border inside the tile, instead of hanging
   half outside & getting cut off when drawn up against the edge of the
   view.
+- Also part of issue #13, antialias the tile ID font.
 
 
 ## [1.2] (Android versionCode 5) - 2019-06-16
