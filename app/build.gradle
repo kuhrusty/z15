@@ -6,8 +6,8 @@ android {
         applicationId "com.kuhrusty.z15"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 9
-        versionName "1.4"
+        versionCode 10
+        versionName "1.5-dev"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
