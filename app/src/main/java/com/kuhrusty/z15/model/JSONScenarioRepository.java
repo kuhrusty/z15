@@ -43,14 +43,20 @@ public class JSONScenarioRepository implements ScenarioRepository {
         this.context = context;
     }
 
+    //  We have one class which reads all Scenario data; then, we have one
+    //  language-independent file from which we read some elements, and one
+    //  language-dependent one from which we read other elements; then we
+    //  merge the two Scenario instances together into one.
     private static class JsonPrettifier implements JsonDeserializer<Scenario> {
         @Override
         public Scenario deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             Scenario rv = new Scenario();
             JsonObject obj = json.getAsJsonObject();
             rv.setID(obj.get("id").getAsString());
-            rv.setName(obj.get("name").getAsString());
             JsonElement te;
+            if ((te = obj.get("name")) != null) {
+                rv.setName(te.getAsString());
+            }
             if ((te = obj.get("difficulty")) != null) {
                 String ts = te.getAsString();
                 Scenario.Difficulty td;
@@ -170,7 +176,23 @@ public class JSONScenarioRepository implements ScenarioRepository {
         //  we cached our list, let's cache the complete list, and filter out
         //  scenarios 16+ every time we get called.
         if (cache == null) {
-            cache = getList(context, "scenarios.json", Scenario.class);
+            //  baseList has language-independent stuff for each scenario
+            List<Scenario> baseList = getList(context, "scenarios.json", Scenario.class);
+            //  langList has language-dependent stuff for each scenario
+            List<Scenario> langList = getList(context,
+                    context.getString(R.string.assets_subdir) + "/scenarios.json", Scenario.class);
+            //  Now copy the language-dependent attributes into baseList.
+            for (int ii = baseList.size() - 1; ii >= 0; --ii) {
+                String id = baseList.get(ii).getID();
+                for (int jj = langList.size() - 1; jj >= 0; --jj) {
+                    if (langList.get(jj).getID().equals(id)) {
+                        baseList.get(ii).mergeFrom(langList.get(jj));
+                        langList.remove(jj);
+                        break;
+                    }
+                }
+            }
+            cache = baseList;
         }
         List<Scenario> tl = cache;
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
@@ -193,12 +215,11 @@ public class JSONScenarioRepository implements ScenarioRepository {
 
     //  This guy came from MorbadScorepad JSONGameRepository.
     private <T> List<T> getList(Context context, String filename, Class<T> expectedClass) {
-        String fullPath = context.getString(R.string.assets_subdir) + "/" + filename;
         InputStream is;
         try {
-            is = context.getAssets().open(fullPath);
+            is = context.getAssets().open(filename);
         } catch (IOException e) {
-            Log.w(LOGBIT, "failed to find " + fullPath + " in assets");
+            Log.w(LOGBIT, "failed to find " + filename + " in assets");
             return null;
         }
         Gson gson = newGsonBuilder().create();

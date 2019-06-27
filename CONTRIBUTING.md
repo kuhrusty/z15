@@ -46,28 +46,28 @@ To add a new soundtrack, I *think* this is what you have to do:
    how `PreferenceManager.getDefaultSharedPreferences()` is used in
    `ScenarioActivity` to decide whether to show various UI components.
 
-### Adding new missions
+### Adding new scenarios
 
-These are read at runtime from a text file; theoretically all you should
-need to do is edit `app/src/main/assets/en/scenarios.json` and rebuild.
-(Note that Android Studio's Instant Run does not seem to notice changes
-under `app/src/main/assets`; you have to re-run the app using the green
-arrow thingie.)
+These are read at runtime from two text files; theoretically all you
+should need to do is edit `app/src/main/assets/scenarios.json` (for
+language-independent stuff like the soundtrack and the layout of the map
+tiles) and `app/src/main/assets/en/scenarios.json` (for
+language-dependent stuff like the scenario name) and rebuild.  (Note
+that Android Studio's Instant Run does not seem to notice changes under
+`app/src/main/assets`; you have to re-run the app using the green arrow
+thingie.)
 
 Lines starting with `//` are ignored, so you can have comments.  This is
 parsed by `JSONScenarioRepository.JsonPrettifier`, so that's where to
 look if you want to add features.
 
-Here's an example entry: 
+Here's an example entry in `app/src/main/assets/scenarios.json`: 
 
 ```json5
 {
   //  This actually gets included in the scenario title, so you
   //  probably want it to be a number.
   "id": "4",
-  
-  //  This is displayed as the scenario title
-  "name": "Let's Go To The Mall",
   
   //  This determines the title background:
   //  - "prologue" - blue
@@ -111,6 +111,27 @@ Here's an example entry:
   ]
 }
 ```
+
+And here's the corresponding language-dependent entry in
+`app/src/main/assets/en/scenarios.json`:
+
+```json5
+{
+  //  This actually gets included in the scenario title, so you
+  //  probably want it to be a number.
+  "id": "4",
+  
+  //  This is displayed as the scenario title
+  "name": "Let's Go To The Mall"
+  
+  //  Other scenario setup stuff to be added later; that's issue #17.
+}
+```
+
+**Oh, one other thing:** when you add a new scenario, you'll need to
+update at least one unit test (`JSONScenarioRepositoryTest` under
+`app/src/androidTest`).
+
 
 ### The launch icon
 

@@ -1,264 +1,63 @@
 [
   {
     "id": "1",
-    "name": "The End of Innocence - Part 1",
-    "difficulty": "prologue",
-    "soundtrack": "nogrowl",
-    "map": [
-      "21A S    ____    2B S    ____   24A S",
-      "16B N   15B S    1B S   12B E   19B W",
-      "22A S    9B S   26B N   10B N   23A S",
-      "13B N   29B W   14A N   11B N   17B W"
-    ]
+    "name": "The End of Innocence - Part 1"
   }, {
     "id": "2",
-    "name": "The End of Innocence - Part 2",
-    "difficulty": "prologue",
-    "zombieDeck": "scenario2",
-    "soundtrack": "growl60",
-    "map": [
-      " ____    ____    8A S",
-      "21A S    ____    2B S    ____   24A S",
-      "16B N   15B S    1B S   12B E   19B W",
-      "22A S    9B S   26B N   10B N   23A S",
-      "13B N   29B W   14A N   11B N   17B W"
-    ]
+    "name": "The End of Innocence - Part 2"
   }, {
     "id": "3",
-    "name": "The Horde",
-    "difficulty": "beginner",
-    "zombieDeck": "scenario3",
-    "soundtrack": "growl60",
-    "map": [
-      " ____   29B E   14B S   17B E   18B S",
-      " ____    6B N   15B N   16B W   20B N    7A W",
-      " ____   13B N    5B E    4B W   12B S",
-      " 8A E    1B W    2B E    3B W   11B W"
-    ]
+    "name": "The Horde"
   }, {
     "id": "4",
-    "name": "Let's Go To The Mall",
-    "difficulty": "beginner",
-    "zombieDeck": "standard",
-    "soundtrack": "growl60",
-    "map": [
-      " ____   18B E   14B S   22A S   24A S    7A S",
-      "29B E   16B W   15B N   10B E   27A W    9A W   13A W",
-      "17B N    6B W    5B E    4B W   12B S   21A N",
-      "11A E    1B W    2B E    3B W   19B W"
-    ]
+    "name": "Let's Go To The Mall"
   }, {
     "id": "5",
-    "name": "High Security",
-    "difficulty": "beginner",
-    "zombieDeck": "standard",
-    "soundtrack": "growl60",
-    "map": [
-      " ____   18B E   28A E   19B S",
-      " ____   13A N   25A N   20B N    2B E   29B S",
-      " ____   12B E   21A W   17B E   24A W    3B S",
-      "11A E   27A W   14B S   10B S   23B E    9B E   26A W",
-      " ____    ____   15B N   16B W"
-    ]
+    "name": "High Security"
   }, {
     "id": "6",
-    "name": "High Tide",
-    "difficulty": "survivor",
-    "zombieDeck": "standard",
-    "soundtrack": "growl60",
-    "map": [
-      "27B S",
-      " 4A N   23A S   19B E   22A W",
-      "21B N    9A N   28A W    5A E    3A E   15B S",
-      " ____    2B S    ____    ____    7A E   29A S",
-      "12A E   18A N   24A S   17A S    6A W   11B W",
-      " ____   16A E   10B E   30A W    8B E   25A W"
-    ]
+    "name": "High Tide"
   }, {
     "id": "7",
-    "name": "Nightfall",
-    "difficulty": "survivor",
-    "zombieDeck": "standard",
-    "soundtrack": "growl60",
-    "map": [
-      " ____   22A S   23A S    8A S   25A S   15B E   16B S",
-      " ____   10B S   29A W   26B N    9A W   17B W   18B N   24B W",
-// 5B showed up twice in my scenario book, so this uses 4B for one of them
-      " ____    3B N   14A S    4B N   13B N    5B E   19B S",
-      " 7A E   30A W   12B W   21A N    ____   11A E   20B W"
-    ]
+    "name": "Nightfall"
   }, {
     "id": "8",
-    "name": "Walk in the Moonlight",
-    "difficulty": "survivor",
-    "zombieDeck": "standard",
-    "soundtrack": "growl60",
-    "map": [
-      "10A E    1A E    2A E   20A W   24A W",
-      " ____   16A S   18A W   19A E    3A E   21A W   11B E   26A W",
-      " ____   22A N   25B S    ____    ____    ____    9B S   14B S",
-      " ____   23A E   30B W    5A W    6A W    4A W   12B W   13B N    8A W"
-    ]
+    "name": "Walk in the Moonlight"
   }, {
     "id": "9",
-    "name": "Tower Defense",
-    "difficulty": "survivor",
-    "zombieDeck": "standardLetters",
-    "soundtrack": "growl60",
-    "cardsPerGrowl": 2,
-    "map": [
-      "23A S   11B E    7B E    1A E   16A W",
-      "30B W   12B W   13B E    2A W   10A W   22B S   21B E",
-      " ____    ____    8B N   17A S   20B W   25B N    6A N",
-      " ____   18B E   14B W    3A S   26A E   29A W   19B W",
-      " ____   27A W   24A W   15A E    4A W    5A W"
-    ]
+    "name": "Tower Defense"
   }, {
     "id": "10",
-    "name": "The Old \"Out Of Gas\" Routine",
-    "difficulty": "survivor",
-    "zombieDeck": "standard",
-    "soundtrack": "growl60",
-    "map": [
-      " ____   20B E    8A W   29B E    6B W    1B E   17B S",
-      " ____    9B S   10B W   26B N    5B W   15B S    7A N",
-      "31A E   11B W    2B N    3B N    ____   16B N   24B W",
-      " ____   12B E   13B W   14B N    4B W   32A W"
-    ]
+    "name": "The Old \"Out Of Gas\" Routine"
   }, {
     "id": "11",
-    "name": "The Gates of Avalon",
-    "difficulty": "hero",
-    "zombieDeck": "standardLetters",
-    "soundtrack": "growl40",
-    "cardsPerGrowl": 2,
-    "map": [
-      " ____    ____    ____    ____   24B E   18A E   25B E   19B S",
-      " ____    ____    ____   15B E    4A E    5A W    6A E   16A N",
-      " ____    ____    ____   27A N   23B W   13B S",
-      " ____    ____    ____   14B W   22A E   10B E    9B W   12B S",
-      "32A E    1B W    2B E    3B W    7B E    8B W   11B W   21A N"
-    ]
+    "name": "The Gates of Avalon"
   }, {
     "id": "12",
-    "name": "Stocking Up",
-    "difficulty": "hero",
-    "zombieDeck": "standardEvents",
-    "soundtrack": "growl40",
-    "map": [
-      " ____    ____   11A S   21A S   13A S",
-      "18B E   17B S    1B S    2B S    3B S   24A S",
-      "22A N   27A N    9A W   26B E   10A E   29A S   25A S",
-      " ____   23A N    4B S    5B S    6B S   19B N   20B W",
-      " ____    ____   12A N    8A N   28B N"
-    ]
+    "name": "Stocking Up"
   }, {
     "id": "13",
-    "name": "Trapped",
-    "difficulty": "hero",
-    "zombieDeck": "standardLettersEvents",
-    "soundtrack": "growl60",
-    "cardsPerGrowl": 2,
-    "map": [
-      " ____    ____   11A S   21A S   13A S",
-      "18B N   17B S    1B S    2B S    3B S   16B E   29B W",
-      " ____   27A N    9A W   26B E   10A E   30A S",
-      "15B E   14B W    4B S    5B S    6B S   19B N   20B S",
-      " ____    ____   12A N    8A N   28B N"
-    ]
+    "name": "Trapped"
   }, {
     "id": "14",
-    "name": "The Safehouse",
-    "difficulty": "hero",
-    "zombieDeck": "standardEvents",
-    "soundtrack": "growl40",
-    "map": [
-      "18B E    1B E    2B W    3B E    4B W   20B S    ____    ____    8A S",
-      "19B N   29B S   17A S   16A W   13B E   14B W   24A S    ____    5B S",
-      "25A E   10A E   30B S   15A E   27A W    7B W    9A N    6B W   12B W",
-      "11A E   28A W   26B W   22A W    ____    ____   23A N",
-      " ____    ____   21A N"
-    ]
+    "name": "The Safehouse"
   }, {
     "id": "15",
-    "name": "The Alpha",
-    "difficulty": "hero",
-    "zombieDeck": "standardEvents",
-    "soundtrack": "growl40",
-    "map": [
-      "24B S   16A S   17A W   23A S",
-      "21B N   20B W    6B N   25B N    ____    ____   26A S   13B E   8A W",
-      " ____    ____    7B S   10B S   18A W    4A W   30B S    1B S",
-      " ____    ____   19B N   14B W   22A N    ____    5B S    2B N",
-      " ____    ____    ____    ____    ____    ____   12B N   11B W"
-    ]
+    "name": "The Alpha"
   }, {
     "id": "16",
-    "name": "The Decoy",
-    "difficulty": "hero",
-    "zombieDeck": "standardEvents",
-    "soundtrack": "growl40",
-    "map": [
-      " ____   22A E   21B S   24B E    3A E    9B W   23A W",
-      " ____   15A S   20A E   16A W    ____    1B N",
-      "11B E   30B W   19A W   18A E    2B W   10B N",
-      " 8A N   25A E   17A N   31A E    4A E   27A W   26A W"
-    ]
+    "name": "The Decoy"
   }, {
     "id": "17",
-    "name": "The Return of the Teen",
-    "difficulty": "hero",
-    "zombieDeck": "standardLettersEvents",
-    "soundtrack": "growl40",
-    "cardsPerGrowl": 2,
-    "map": [
-      "11B E    ____    ____   18B E    5B W   19B S",
-      " 1B N    ____    ____    4B S   24A S    8A N",
-      "12B N   13B S   25A E   26B E   10B E    6B E    20B S",
-      " ____   14B N    3B E   15B W   21B E   17A W    23B N",
-      " ____   32A E   30B E    2B E   22B W   16A E    29B W"
-    ]
+    "name": "The Return of the Teen"
   }, {
     "id": "18",
-    "name": "We Need Big Guns",
-    "difficulty": "hero",
-    "zombieDeck": "standardEvents",
-    "soundtrack": "growl40",
-    "map": [
-      " ____    ____   24B S    ____   14B E    8A W",
-      "27B S   12B E   13B W    ____    3A N",
-      "11B N   32B W    2A W   16A W    4A N",
-      "20B N   18A E    1A E   26B N   15A N    7A S",
-      "28B N    ____    ____   17A E    5A E   19B W"
-    ]
+    "name": "We Need Big Guns"
   }, {
     "id": "19",
-    "name": "The Siege",
-    "difficulty": "hero",
-    "zombieDeck": "standardLettersEvents",
-    "soundtrack": "growl60",
-    "cardsPerGrowl": 2,
-    "map": [
-      " ____    ____   24B S    ____   14B E    8A W",
-      "27B S   12B E   13B W    ____    3A N",
-      "11B N   32B W    2A W   16A W    4A N",
-      "20B N   18A E    1A E   26B N   15A N    7A S",
-      "28B N    ____    ____   17A E    5A E   19B W"
-    ]
+    "name": "The Siege"
   }, {
     "id": "20",
-    "name": "Rescue",
-    "difficulty": "hero",
-    "zombieDeck": "standardEvents",
-    "soundtrack": "growl40",
-    "map": [
-      " ____    ____    ____    ____    ____   31A S",
-      " ____    8A S   21A S    ____   20B E   29B W",
-      " 7A S    2A S    4A N   19B E   18B W",
-      " 1B S   22B N   30A W   32B W    5A W   25A W",
-      "17A E   13B S   24A E   10A S   23A W",
-      "27B E   26B S    3A E   15A N",
-      "28B E   16A N"
-    ]
+    "name": "Rescue"
   }
 ]

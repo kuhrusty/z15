@@ -6,6 +6,9 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ## Unreleased
 #### Added
 #### Changed
+- Split `scenarios.json` into separate language-independent and
+  language-dependent files
+  ([Issue #15](https://github.com/kuhrusty/z15/issues/15))
 
 
 ## [1.4] (Android versionCode 9) - 2019-06-23
