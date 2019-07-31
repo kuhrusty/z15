@@ -1,5 +1,6 @@
 package com.kuhrusty.z15.ui;
 
+import android.support.v7.content.res.AppCompatResources;
 import android.widget.TextView;
 
 import com.kuhrusty.z15.R;
@@ -18,11 +19,11 @@ public abstract class UIUtil {
                 tv.getContext().getString(R.string.scenario_format),
                 scenario.getID(), scenario.getName()));
         if (scenario.getDifficulty().equals(Scenario.Difficulty.Hero)) {
-            tv.setBackground(tv.getResources().getDrawable(R.drawable.red_gradient));
+            tv.setBackground(AppCompatResources.getDrawable(tv.getContext(), R.drawable.red_gradient));
         } else if (scenario.getDifficulty().equals(Scenario.Difficulty.Survivor)) {
-            tv.setBackground(tv.getResources().getDrawable(R.drawable.green_gradient));
+            tv.setBackground(AppCompatResources.getDrawable(tv.getContext(), R.drawable.green_gradient));
         } else {
-            tv.setBackground(tv.getResources().getDrawable(R.drawable.blue_gradient));
+            tv.setBackground(AppCompatResources.getDrawable(tv.getContext(), R.drawable.blue_gradient));
         }
     }
 }

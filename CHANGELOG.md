@@ -6,6 +6,10 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ## Unreleased
 #### Added
 #### Changed
+- [Issue #18](https://github.com/kuhrusty/z15/issues/18): switch from
+  `Resources.getDrawable()` to `AppCompatResources.getDrawable()` and
+  remove the scenario name TextView default background gradient from all
+  layout files.  Which is dumb.
 - Split `scenarios.json` into separate language-independent and
   language-dependent files
   ([Issue #15](https://github.com/kuhrusty/z15/issues/15))
