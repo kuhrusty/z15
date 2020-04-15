@@ -6,6 +6,8 @@ format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 ## Unreleased
 #### Addded
 #### Changed
+- [Issue #19](https://github.com/kuhrusty/z15/issues/19): fix the
+  rotation of one of the tiles in the scenario 18 & 19 maps.
 
 
 ## [1.5] (Android versionCode 11) - 2019-07-30
